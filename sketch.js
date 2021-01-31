@@ -1,3 +1,34 @@
+var name="vIDHYA";
+console.log(name);
+
+var num=13
+console.log(num);
+
+var score;
+console.log(score);
+
+var score1=null;
+console.log(score1);
+
+
+var arr1=[2,3,"swati","hermoine"]
+console.log(arr1)
+
+arr1.push("vidhya");
+console.log(arr1);
+
+console.log(arr1[4]);
+
+           
+var arr2 =[[1,2],[3,4],["x","y"]]
+               
+console.log(arr2)
+
+arr2.pop();
+console.log(arr2)
+
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,7 +38,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
+var gamestate="onsling"
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +100,20 @@ function draw(){
 }
 
 function mouseDragged(){
+    if (gamestate!== "launched"){
+
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gamestate="launched"
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+       // slingshot.attach(bird.body);
     }
 }
